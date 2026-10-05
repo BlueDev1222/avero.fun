@@ -1,180 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b0f14" />
-  <meta name="description" content="Download Avero for Windows." />
-  <title>Avero — Download</title>
-  <link rel="icon" type="image/png" href="Avero%20Logo.png" />
-  <style>
-    :root{
-      --bg:#07090c;
-      --panel:#0d1117;
-      --panel-2:#121822;
-      --text:#f5f7fb;
-      --muted:#96a0ad;
-      --line:rgba(255,255,255,.08);
-      --accent:#6fe6c1;
-      --accent-2:#8af0d0;
-      --shadow:0 20px 70px rgba(0,0,0,.45);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      min-height:100vh;
-      color:var(--text);
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(111,230,193,.12), transparent 34%),
-        linear-gradient(180deg,#090c10 0%,#06080b 100%);
-    }
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1120px,calc(100% - 36px));margin:0 auto}
-    nav{
-      height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
-    .brand img{width:38px;height:38px;object-fit:contain}
-    .nav-link{color:var(--muted);font-weight:600;font-size:14px}
-    .nav-link:hover{color:var(--text)}
-    main{padding:70px 0 90px}
-    .hero{text-align:center;max-width:800px;margin:0 auto}
-    .logo{
-      width:122px;height:122px;object-fit:contain;
-      filter:drop-shadow(0 18px 40px rgba(111,230,193,.18));
-    }
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:8px;
-      margin-top:22px;padding:7px 11px;border:1px solid var(--line);
-      border-radius:999px;background:rgba(255,255,255,.03);
-      color:#c9d1da;font-size:13px;font-weight:700;
-    }
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)}
-    h1{
-      margin:20px 0 14px;
-      font-size:clamp(46px,8vw,82px);
-      line-height:.98;letter-spacing:-.06em;
-    }
-    .hero p{
-      max-width:650px;margin:0 auto;color:var(--muted);
-      font-size:18px;line-height:1.65;
-    }
-    .cards{
-      margin-top:54px;
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:18px;
-    }
-    .card{
-      text-align:left;
-      padding:28px;
-      border:1px solid var(--line);
-      border-radius:24px;
-      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
-    }
-    .card.featured{outline:1px solid rgba(111,230,193,.22)}
-    .tag{
-      display:inline-block;
-      margin-bottom:18px;
-      color:#06120e;background:var(--accent);
-      padding:5px 9px;border-radius:999px;font-size:11px;font-weight:900;
-      letter-spacing:.08em;text-transform:uppercase;
-    }
-    .card h2{margin:0;font-size:24px;letter-spacing:-.03em}
-    .card p{margin:10px 0 22px;color:var(--muted);font-size:15px;line-height:1.55}
-    .meta{
-      display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;
-      color:#bdc5cf;font-size:13px;font-weight:700;
-    }
-    .meta span{padding:7px 9px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
-    .btn{
-      display:flex;align-items:center;justify-content:center;gap:10px;
-      width:100%;padding:14px 18px;border-radius:14px;
-      background:var(--accent);color:#06120e;font-weight:900;
-      transition:.2s ease;box-shadow:0 12px 30px rgba(111,230,193,.14);
-    }
-    .btn:hover{transform:translateY(-2px);background:var(--accent-2)}
-    .btn.secondary{background:#18202b;color:var(--text);box-shadow:none}
-    .btn.secondary:hover{background:#202a37}
-    .note{
-      margin-top:22px;padding:16px 18px;border:1px solid var(--line);
-      border-radius:16px;background:rgba(255,255,255,.025);
-      color:var(--muted);font-size:13px;line-height:1.6;text-align:center;
-    }
-    footer{
-      border-top:1px solid var(--line);
-      color:#76808c;font-size:13px;
-      padding:26px 0 38px;text-align:center;
-    }
-    @media(max-width:760px){
-      main{padding-top:38px}
-      .cards{grid-template-columns:1fr}
-      .card{padding:22px}
-      .hero p{font-size:16px}
-      nav{height:68px}
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <nav>
-      <a class="brand" href="/">
-        <img src="Avero%20Logo.png" alt="Avero logo" />
-        <span>Avero</span>
-      </a>
-      <a class="nav-link" href="https://github.com/BlueDev1222/avero.fun" target="_blank" rel="noreferrer">GitHub</a>
-    </nav>
-
-    <main>
-      <section class="hero">
-        <img class="logo" src="Avero%20Logo.png" alt="Avero logo" />
-        <div class="eyebrow"><span class="dot"></span> Avero v1.0.0</div>
-        <h1>Download Avero</h1>
-        <p>A simple Windows companion built to help ER:LC staff work faster with quick commands, presets, and a cleaner workflow.</p>
-
-        <div class="cards">
-          <article class="card featured">
-            <span class="tag">Recommended</span>
-            <h2>Windows Setup</h2>
-            <p>Installs Avero on your PC and gives you the normal desktop app experience.</p>
-            <div class="meta">
-              <span>Windows</span>
-              <span>v1.0.0</span>
-              <span>Installer</span>
-            </div>
-            <a class="btn" href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.0.0/Avero-Setup-1.0.0.exe">
-              Download Setup
-            </a>
-          </article>
-
-          <article class="card">
-            <h2>Portable Version</h2>
-            <p>Run Avero without installing it. Great for keeping the app in a folder or on a USB drive.</p>
-            <div class="meta">
-              <span>Windows</span>
-              <span>v1.0.0</span>
-              <span>Portable</span>
-            </div>
-            <a class="btn secondary" href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.0.0/Avero-Portable-1.0.0.exe">
-              Download Portable
-            </a>
-          </article>
-        </div>
-
-        <div class="note">
-          Avero currently supports Windows. If Windows SmartScreen appears on a new release, verify that you downloaded it from this official page before continuing.
-        </div>
-      </section>
-    </main>
-
-    <footer>© 2026 Avero. Built for ER:LC staff tools.</footer>
-  </div>
-</body>
-</html>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b10"><meta name="description" content="Avero — the ER:LC companion for staff and players.">
+<title>Avero — ER:LC Companion</title><link rel="icon" type="image/png" href="Avero%20Logo.png">
+<style>
+:root{--bg:#06080c;--card:#0c1118;--text:#f7f9fc;--muted:#929dac;--line:rgba(255,255,255,.08);--a:#6fe6c1;--a2:#8af0d0;--discord:#5865f2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(900px 500px at 50% -120px,rgba(111,230,193,.18),transparent 65%),var(--bg)}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:11px;font-weight:850;font-size:18px}.brand img{width:38px;height:38px;object-fit:contain}.links{display:flex;align-items:center;gap:22px}.links a{font-size:14px;font-weight:700;color:var(--muted);transition:.2s}.links a:hover{color:#fff}.discord-small{padding:9px 14px!important;border-radius:10px;background:rgba(88,101,242,.15);color:#cdd1ff!important;border:1px solid rgba(88,101,242,.25)}
+.hero{padding:92px 0 72px;text-align:center;max-width:880px;margin:auto}.logo{width:116px;height:116px;object-fit:contain;filter:drop-shadow(0 20px 40px rgba(111,230,193,.2))}.pill{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);font-size:13px;font-weight:750;color:#c7d0da}.dot{width:7px;height:7px;border-radius:50%;background:var(--a);box-shadow:0 0 15px var(--a)}
+h1{font-size:clamp(52px,8vw,88px);letter-spacing:-.065em;line-height:.96;margin:20px 0 18px}.lead{max-width:690px;margin:auto;color:var(--muted);font-size:18px;line-height:1.65}.actions{display:flex;justify-content:center;gap:12px;margin-top:30px;flex-wrap:wrap}.action{padding:13px 19px;border-radius:12px;font-weight:850;font-size:14px;border:1px solid var(--line);background:#131a23}.action.primary{background:var(--a);color:#05120e;border-color:transparent}.action:hover{transform:translateY(-2px)}
+.section{padding:34px 0 80px}.section-title{text-align:center;margin-bottom:28px}.section-title h2{font-size:34px;letter-spacing:-.04em;margin:0 0 9px}.section-title p{color:var(--muted);margin:0}
+.update{position:relative;overflow:hidden;padding:32px;border:1px solid rgba(111,230,193,.2);border-radius:24px;background:linear-gradient(135deg,rgba(111,230,193,.09),rgba(255,255,255,.025));margin-bottom:54px}.update:after{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:rgba(111,230,193,.08);filter:blur(40px);right:-100px;top:-120px}.update-label{color:var(--a);font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.update h2{font-size:30px;letter-spacing:-.04em;margin:10px 0}.update p{max-width:760px;color:#aeb8c5;line-height:1.7;margin:0;font-size:16px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{padding:28px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.018));box-shadow:0 24px 70px rgba(0,0,0,.3)}.card.recommended{border-color:rgba(111,230,193,.24)}.tag{display:inline-block;background:var(--a);color:#06120e;border-radius:999px;padding:5px 9px;font-size:10px;font-weight:950;letter-spacing:.08em;text-transform:uppercase;margin-bottom:17px}.card h3{font-size:23px;margin:0;letter-spacing:-.03em}.card p{color:var(--muted);line-height:1.6;font-size:14px;margin:10px 0 19px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:19px}.meta span{font-size:12px;font-weight:750;color:#bcc5d0;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.025)}.download{display:flex;justify-content:center;padding:14px;border-radius:12px;font-weight:900;background:var(--a);color:#06120e;transition:.2s}.download:hover{background:var(--a2);transform:translateY(-2px)}.download.alt{background:#18212c;color:#fff}.download.alt:hover{background:#202b39}
+.community{margin-top:54px;padding:34px;border-radius:24px;border:1px solid rgba(88,101,242,.24);background:linear-gradient(135deg,rgba(88,101,242,.12),rgba(255,255,255,.02));display:flex;justify-content:space-between;align-items:center;gap:24px}.community h2{margin:0 0 8px;font-size:27px;letter-spacing:-.035em}.community p{margin:0;color:var(--muted);line-height:1.6}.discord-btn{white-space:nowrap;padding:13px 18px;background:var(--discord);border-radius:12px;font-weight:900;transition:.2s}.discord-btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.note{text-align:center;color:#727d8a;font-size:12px;margin-top:20px;line-height:1.6}footer{border-top:1px solid var(--line);padding:28px 0 36px;color:#697481;font-size:13px;display:flex;justify-content:space-between;gap:15px}footer a:hover{color:#fff}
+@media(max-width:720px){.hero{padding-top:55px}.cards{grid-template-columns:1fr}.links a:not(.discord-small){display:none}.community{align-items:flex-start;flex-direction:column}.discord-btn{width:100%;text-align:center}.update{padding:24px}footer{flex-direction:column;text-align:center}}
+</style></head>
+<body><div class="wrap">
+<nav><a class="brand" href="/"><img src="Avero%20Logo.png" alt="Avero logo"><span>Avero</span></a><div class="links"><a href="#download">Download</a><a href="https://github.com/BlueDev1222/avero.fun" target="_blank" rel="noreferrer">GitHub</a><a class="discord-small" href="https://discord.gg/WWM8pTCXj4" target="_blank" rel="noreferrer">Join Discord</a></div></nav>
+<main>
+<section class="hero"><img class="logo" src="Avero%20Logo.png" alt="Avero logo"><div class="pill"><span class="dot"></span>Avero v1.0.0 is available</div><h1>Your ER:LC companion.</h1><p class="lead">Avero makes server management faster with quick commands, custom presets, and a streamlined desktop workflow — with much more already on the way.</p><div class="actions"><a class="action primary" href="#download">Download Avero</a><a class="action" href="https://discord.gg/WWM8pTCXj4" target="_blank" rel="noreferrer">Join the Community</a></div></section>
+<section class="section">
+<div class="update"><div class="update-label">Already in development</div><h2>The next Avero update is underway.</h2><p>Avero is growing beyond server management. The next update is already in development and will introduce more features built for the player experience itself — making Avero useful not only for managing ER:LC servers, but for the people playing in them too. More details will be shared as development continues.</p></div>
+<div id="download" class="section-title"><h2>Download Avero</h2><p>Choose the version that works best for you.</p></div>
+<div class="cards">
+<article class="card recommended"><span class="tag">Recommended</span><h3>Windows Setup</h3><p>Install Avero normally on your PC for the standard desktop experience.</p><div class="meta"><span>Windows</span><span>v1.0.0</span><span>Installer</span></div><a class="download" href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.0.0/Avero-Setup-1.0.0.exe">Download Setup</a></article>
+<article class="card"><h3>Portable Version</h3><p>No installation required. Keep Avero in a folder or take it with you on a USB drive.</p><div class="meta"><span>Windows</span><span>v1.0.0</span><span>Portable</span></div><a class="download alt" href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.0.0/Avero-Portable-1.0.0.exe">Download Portable</a></article>
+</div>
+<div class="note">Avero currently supports Windows. Always download Avero from the official website or GitHub release.</div>
+<div class="community"><div><h2>Join the Avero community</h2><p>Follow development, hear about upcoming features, get help, and connect with other Avero users.</p></div><a class="discord-btn" href="https://discord.gg/WWM8pTCXj4" target="_blank" rel="noreferrer">Join Discord →</a></div>
+</section></main>
+<footer><span>© 2026 Avero. Built for ER:LC.</span><span><a href="https://discord.gg/WWM8pTCXj4" target="_blank" rel="noreferrer">Discord</a> · <a href="https://github.com/BlueDev1222/avero.fun" target="_blank" rel="noreferrer">GitHub</a></span></footer>
+</div></body></html>
