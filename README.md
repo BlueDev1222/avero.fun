@@ -1,11 +1,20 @@
-# Avero download page
+# Avero website
 
-Static download website for Avero, served by the repository's existing GitHub Pages configuration. `CNAME` retains `avero.fun`. No build step or JavaScript is required.
+The redesigned Avero product and download site, published by GitHub Pages from `main` at **https://avero.fun/**. The existing `CNAME`, Discord invite, and versioned release downloads are preserved.
 
-Version 1.1.1 downloads are hosted in this repository's GitHub release, not committed as binary executables. `index.html` contains explicit versioned links for the installer, portable build, release notes, and SHA-256 checksums. Assets include the supplied Avero logo and screenshots of the real application.
+## Files
 
-To update: build and test the desktop application, attach the installer, portable executable and `SHA256SUMS.txt` to a new release, then update version labels, download links, file sizes, screenshots and release notes on this page. Keep the unsigned-build notice accurate. Push the site files to `main` to publish through GitHub Pages.
+- `index.html`: product information, Windows downloads, community links, and FAQs.
+- `styles.css`: responsive blue-and-ink design, light download section, keyboard focus states, and reduced-motion support.
+- `site.js`: accessible preview tabs with arrow-key, Home, and End navigation. No dependencies.
+- `assets/`: optimized supplied logo and screenshots of the real desktop application.
 
-Preview with any local static HTTP server. Verify keyboard navigation, FAQ expansion, mobile layout, and release download URLs before publishing. The site uses system fonts and has no analytics or tracking scripts. The existing redesign and Discord links are preserved.
+No installation or build step is required. Serve this folder with a local static HTTP server to preview it. All fonts are system fonts; there are no analytics, external scripts, or third-party font requests.
 
-Avero is independent software, unaffiliated with Roblox or Police Roleplay Community.
+## Release updates
+
+Downloads point to the Avero 1.1.1 GitHub release. When publishing a new application version, update the version text, installer/portable URLs, sizes, release notes, and checksum link in `index.html`. Keep signing and updater notices accurate. Replace screenshots when the app changes.
+
+Before pushing, check desktop/tablet/mobile layouts, keyboard tab switching, FAQ expansion, loaded images, and live release links. Preserve the custom domain in `CNAME`.
+
+The application is independent software and is not affiliated with Roblox or Police Roleplay Community.

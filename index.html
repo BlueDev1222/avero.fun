@@ -2,926 +2,507 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#07090d" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#080d17" />
+    <title>Avero — Make room for your community.</title>
     <meta
       name="description"
-      content="Avero — a modern ER:LC staff companion."
+      content="Your ER:LC commands, moderation tools, and messages in one focused Windows workspace. Download Avero 1.1.1."
     />
-    <title>Avero — ER:LC Staff Companion</title>
+    <meta property="og:title" content="Avero — Make room for your community." />
+    <meta
+      property="og:description"
+      content="The Windows workspace for ER:LC staff. Less repeat work. More time for your people."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://avero.fun/" />
+    <meta
+      property="og:image"
+      content="https://avero.fun/assets/dashboard.webp"
+    />
+    <link rel="canonical" href="https://avero.fun/" />
     <link rel="icon" href="Avero%20Logo.png" />
-    <style>
-      :root {
-        --bg: #07090d;
-        --bg2: #0a0d13;
-        --surface: #0d1118;
-        --surface2: #111720;
-        --text: #f6f8fb;
-        --muted: #8d98a7;
-        --line: rgba(255, 255, 255, 0.075);
-        --green: #65e6bb;
-        --green2: #a1f6d9;
-        --purple: #5865f2;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family:
-          Inter,
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          sans-serif;
-        overflow-x: hidden;
-      }
-      body:before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        background:
-          radial-gradient(
-            900px 500px at 50% -100px,
-            rgba(101, 230, 187, 0.13),
-            transparent 65%
-          ),
-          radial-gradient(
-            650px 400px at 100% 45%,
-            rgba(88, 101, 242, 0.06),
-            transparent 70%
-          );
-        z-index: -2;
-      }
-      body:after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        opacity: 0.13;
-        z-index: -1;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-          linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.025) 1px,
-            transparent 1px
-          );
-        background-size: 42px 42px;
-        mask-image: linear-gradient(to bottom, #000, transparent 72%);
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      .shell {
-        width: min(1180px, calc(100% - 40px));
-        margin: auto;
-      }
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(7, 9, 13, 0.68);
-        backdrop-filter: blur(22px);
-        border-bottom: 1px solid var(--line);
-      }
-      nav {
-        height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 11px;
-        font-size: 18px;
-        font-weight: 850;
-        letter-spacing: -0.02em;
-      }
-      .brand img {
-        width: 37px;
-        height: 37px;
-        object-fit: contain;
-      }
-      .navlinks {
-        display: flex;
-        align-items: center;
-        gap: 26px;
-      }
-      .navlinks > a {
-        font-size: 13px;
-        font-weight: 750;
-        color: #9ca6b3;
-        transition: 0.2s;
-      }
-      .navlinks > a:hover {
-        color: #fff;
-      }
-      .navlinks .discord {
-        color: #e1e3ff;
-        padding: 9px 14px;
-        border-radius: 10px;
-        border: 1px solid rgba(88, 101, 242, 0.26);
-        background: rgba(88, 101, 242, 0.12);
-      }
-      .hero {
-        min-height: 690px;
-        display: grid;
-        place-items: center;
-        text-align: center;
-        padding: 88px 0 70px;
-        position: relative;
-      }
-      .hero-inner {
-        max-width: 900px;
-      }
-      .hero-logo-wrap {
-        width: 142px;
-        height: 142px;
-        margin: 0 auto 24px;
-        display: grid;
-        place-items: center;
-        border-radius: 38px;
-        background: linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.06),
-          rgba(255, 255, 255, 0.015)
-        );
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow:
-          0 35px 90px rgba(0, 0, 0, 0.45),
-          0 0 90px rgba(101, 230, 187, 0.09);
-      }
-      .hero-logo {
-        width: 105px;
-        height: 105px;
-        object-fit: contain;
-        filter: drop-shadow(0 14px 30px rgba(101, 230, 187, 0.2));
-      }
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 7px 11px;
-        border-radius: 999px;
-        background: rgba(101, 230, 187, 0.07);
-        border: 1px solid rgba(101, 230, 187, 0.17);
-        color: #c9f9e9;
-        font-size: 12px;
-        font-weight: 800;
-      }
-      .pulse {
-        width: 7px;
-        height: 7px;
-        background: var(--green);
-        border-radius: 50%;
-        box-shadow:
-          0 0 0 5px rgba(101, 230, 187, 0.08),
-          0 0 18px var(--green);
-      }
-      h1 {
-        font-size: clamp(58px, 8.7vw, 102px);
-        line-height: 0.91;
-        letter-spacing: -0.072em;
-        margin: 22px 0 24px;
-        font-weight: 900;
-      }
-      .gradient {
-        background: linear-gradient(110deg, #fff 20%, #b8c1cc 55%, #65e6bb);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
-      .lead {
-        max-width: 710px;
-        margin: auto;
-        font-size: 18px;
-        line-height: 1.7;
-        color: var(--muted);
-      }
-      .hero-actions {
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 32px;
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 9px;
-        padding: 13px 19px;
-        border-radius: 12px;
-        font-size: 14px;
-        font-weight: 850;
-        border: 1px solid var(--line);
-        background: #121821;
-        transition: 0.22s;
-      }
-      .btn:hover {
-        transform: translateY(-2px);
-        border-color: rgba(255, 255, 255, 0.14);
-      }
-      .btn.primary {
-        background: var(--green);
-        color: #06110d;
-        border-color: transparent;
-        box-shadow: 0 14px 38px rgba(101, 230, 187, 0.12);
-      }
-      .btn.primary:hover {
-        background: var(--green2);
-        box-shadow: 0 18px 48px rgba(101, 230, 187, 0.18);
-      }
-      .mini {
-        margin-top: 18px;
-        color: #596472;
-        font-size: 12px;
-      }
-      .section {
-        padding: 94px 0;
-      }
-      .eyebrow {
-        font-size: 11px;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-        color: var(--green);
-        font-weight: 900;
-      }
-      .heading {
-        font-size: clamp(34px, 5vw, 54px);
-        letter-spacing: -0.055em;
-        line-height: 1.05;
-        margin: 12px 0 14px;
-      }
-      .sub {
-        color: var(--muted);
-        line-height: 1.7;
-        max-width: 650px;
-        margin: 0;
-      }
-      .feature-grid {
-        display: grid;
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 18px;
-        margin-top: 36px;
-      }
-      .feature {
-        position: relative;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 24px;
-        padding: 30px;
-        background: linear-gradient(
-          145deg,
-          rgba(255, 255, 255, 0.045),
-          rgba(255, 255, 255, 0.015)
-        );
-        min-height: 230px;
-      }
-      .feature:before {
-        content: "";
-        position: absolute;
-        width: 230px;
-        height: 230px;
-        border-radius: 50%;
-        filter: blur(70px);
-        background: rgba(101, 230, 187, 0.08);
-        right: -80px;
-        bottom: -120px;
-      }
-      .icon {
-        width: 42px;
-        height: 42px;
-        display: grid;
-        place-items: center;
-        border-radius: 12px;
-        background: rgba(101, 230, 187, 0.08);
-        border: 1px solid rgba(101, 230, 187, 0.14);
-        font-size: 19px;
-        margin-bottom: 40px;
-      }
-      .feature h3 {
-        font-size: 22px;
-        letter-spacing: -0.035em;
-        margin: 0 0 9px;
-      }
-      .feature p {
-        color: var(--muted);
-        line-height: 1.65;
-        margin: 0;
-        font-size: 14px;
-      }
-      .feature.small .icon {
-        background: rgba(88, 101, 242, 0.08);
-        border-color: rgba(88, 101, 242, 0.15);
-      }
-      .roadmap {
-        padding: 1px;
-        border-radius: 28px;
-        background: linear-gradient(
-          115deg,
-          rgba(101, 230, 187, 0.35),
-          rgba(255, 255, 255, 0.06),
-          rgba(88, 101, 242, 0.2)
-        );
-        margin: 15px 0;
-      }
-      .roadmap-inner {
-        border-radius: 27px;
-        background: linear-gradient(120deg, #0c1217, #0b0e14);
-        padding: 40px;
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 30px;
-        align-items: center;
-      }
-      .roadmap h2 {
-        font-size: clamp(30px, 4vw, 46px);
-        letter-spacing: -0.05em;
-        margin: 9px 0 13px;
-      }
-      .roadmap p {
-        max-width: 770px;
-        color: #9ba6b3;
-        line-height: 1.72;
-        margin: 0;
-      }
-      .devchip {
-        align-self: start;
-        padding: 9px 12px;
-        border: 1px solid rgba(101, 230, 187, 0.18);
-        background: rgba(101, 230, 187, 0.07);
-        border-radius: 999px;
-        color: #bff5e2;
-        font-size: 11px;
-        font-weight: 900;
-        white-space: nowrap;
-      }
-      .download-head {
-        text-align: center;
-        margin-bottom: 36px;
-      }
-      .download-head .sub {
-        margin: auto;
-      }
-      .downloads {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 18px;
-      }
-      .download-card {
-        position: relative;
-        padding: 30px;
-        border-radius: 24px;
-        border: 1px solid var(--line);
-        background: linear-gradient(155deg, #10151d, #0b0f15);
-        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
-        transition: 0.25s;
-      }
-      .download-card:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255, 255, 255, 0.13);
-      }
-      .download-card.recommended {
-        border-color: rgba(101, 230, 187, 0.23);
-      }
-      .rec {
-        position: absolute;
-        right: 22px;
-        top: 22px;
-        background: rgba(101, 230, 187, 0.09);
-        border: 1px solid rgba(101, 230, 187, 0.15);
-        color: #baf3df;
-        border-radius: 999px;
-        padding: 6px 9px;
-        font-size: 10px;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-      .os {
-        width: 45px;
-        height: 45px;
-        border-radius: 13px;
-        display: grid;
-        place-items: center;
-        background: #171e28;
-        border: 1px solid var(--line);
-        font-weight: 900;
-        margin-bottom: 32px;
-      }
-      .download-card h3 {
-        font-size: 25px;
-        letter-spacing: -0.04em;
-        margin: 0 0 9px;
-      }
-      .download-card p {
-        font-size: 14px;
-        color: var(--muted);
-        line-height: 1.6;
-        margin: 0 0 22px;
-      }
-      .meta {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-bottom: 22px;
-      }
-      .meta span {
-        padding: 6px 9px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.025);
-        border-radius: 8px;
-        color: #adb7c3;
-        font-size: 11px;
-        font-weight: 800;
-      }
-      .download-btn {
-        width: 100%;
-        padding: 14px;
-        border-radius: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-        background: var(--green);
-        color: #06110d;
-        font-weight: 900;
-        font-size: 14px;
-        transition: 0.2s;
-      }
-      .download-btn:hover {
-        background: var(--green2);
-      }
-      .download-btn.alt {
-        background: #19212c;
-        color: #f4f7fa;
-      }
-      .download-btn.alt:hover {
-        background: #222c39;
-      }
-      .safe {
-        text-align: center;
-        color: #5f6a78;
-        font-size: 12px;
-        margin-top: 18px;
-      }
-      .discord-panel {
-        margin-top: 70px;
-        position: relative;
-        overflow: hidden;
-        padding: 42px;
-        border: 1px solid rgba(88, 101, 242, 0.2);
-        border-radius: 26px;
-        background: linear-gradient(
-          120deg,
-          rgba(88, 101, 242, 0.13),
-          rgba(88, 101, 242, 0.035) 55%,
-          rgba(255, 255, 255, 0.02)
-        );
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 30px;
-      }
-      .discord-panel:after {
-        content: "";
-        position: absolute;
-        width: 280px;
-        height: 280px;
-        background: rgba(88, 101, 242, 0.13);
-        filter: blur(80px);
-        border-radius: 50%;
-        right: -100px;
-        top: -130px;
-      }
-      .discord-panel h2 {
-        font-size: 30px;
-        letter-spacing: -0.045em;
-        margin: 0 0 9px;
-      }
-      .discord-panel p {
-        color: #9aa4b1;
-        margin: 0;
-        line-height: 1.6;
-      }
-      .discord-btn {
-        z-index: 1;
-        white-space: nowrap;
-        padding: 13px 19px;
-        border-radius: 12px;
-        background: var(--purple);
-        font-size: 14px;
-        font-weight: 900;
-        transition: 0.2s;
-      }
-      .discord-btn:hover {
-        transform: translateY(-2px);
-        filter: brightness(1.08);
-      }
-      footer {
-        border-top: 1px solid var(--line);
-        padding: 34px 0 42px;
-      }
-      .footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        color: #66717e;
-        font-size: 12px;
-      }
-      .footer-links {
-        display: flex;
-        gap: 20px;
-      }
-      .footer a:hover {
-        color: #fff;
-      }
-      @media (max-width: 760px) {
-        .shell {
-          width: min(100% - 28px, 1180px);
-        }
-        .navlinks > a:not(.discord) {
-          display: none;
-        }
-        .hero {
-          min-height: auto;
-          padding: 64px 0 72px;
-        }
-        .hero-logo-wrap {
-          width: 120px;
-          height: 120px;
-          border-radius: 31px;
-        }
-        .hero-logo {
-          width: 88px;
-          height: 88px;
-        }
-        h1 {
-          font-size: 58px;
-        }
-        .lead {
-          font-size: 16px;
-        }
-        .section {
-          padding: 68px 0;
-        }
-        .feature-grid,
-        .downloads {
-          grid-template-columns: 1fr;
-        }
-        .roadmap-inner {
-          grid-template-columns: 1fr;
-          padding: 27px;
-        }
-        .devchip {
-          justify-self: start;
-        }
-        .discord-panel {
-          padding: 28px;
-          align-items: flex-start;
-          flex-direction: column;
-        }
-        .discord-btn {
-          width: 100%;
-          text-align: center;
-        }
-        .footer {
-          flex-direction: column;
-          text-align: center;
-        }
-        .feature {
-          min-height: 210px;
-        }
-      }
-
-      .app-preview {
-        margin: 0;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        overflow: hidden;
-        background: #0d1118;
-        box-shadow: 0 30px 90px #0005;
-      }
-      .app-preview img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-      .app-preview figcaption {
-        text-align: center;
-        color: var(--muted);
-        font-size: 11px;
-        padding: 15px;
-      }
-      .release-faq {
-        margin-top: 70px;
-      }
-      .release-faq details {
-        border-bottom: 1px solid var(--line);
-      }
-      .release-faq summary {
-        cursor: pointer;
-        padding: 20px 0;
-        color: #cbd5e1;
-        font-size: 14px;
-        font-weight: 600;
-      }
-      .release-faq p {
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.8;
-        max-width: 850px;
-        margin: 0 0 22px;
-      }
-      .safe {
-        line-height: 1.8;
-        color: #8d98a7;
-      }
-      a:focus-visible,
-      summary:focus-visible {
-        outline: 2px solid var(--green);
-        outline-offset: 5px;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        html {
-          scroll-behavior: auto;
-        }
-        * {
-          transition: none !important;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="site.js" defer></script>
   </head>
   <body>
-    <header>
-      <div class="shell">
-        <nav>
-          <a class="brand" href="/"
-            ><img src="Avero%20Logo.png" alt="Avero" /><span>Avero</span></a
-          >
-          <div class="navlinks">
-            <a href="#features">Features</a><a href="#download">Download</a
-            ><a
-              href="https://github.com/BlueDev1222/avero.fun"
-              target="_blank"
-              rel="noreferrer"
-              >GitHub</a
-            ><a
-              class="discord"
-              href="https://discord.gg/WWM8pTCXj4"
-              target="_blank"
-              rel="noreferrer"
-              >Discord</a
-            >
-          </div>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <div class="shell">
-        <section class="hero">
-          <div class="hero-inner">
-            <div class="hero-logo-wrap">
-              <img class="hero-logo" src="Avero%20Logo.png" alt="Avero logo" />
-            </div>
-            <div class="badge">
-              <span class="pulse"></span>Version 1.1.1 available now
-            </div>
-            <h1>
-              <span class="gradient">Staff work,<br />simplified.</span>
-            </h1>
-            <p class="lead">
-              Avero is a desktop companion built for ER:LC staff. Run commands
-              faster, save the messages you use every day, and keep the tools
-              your team needs in one clean workspace.
-            </p>
-            <div class="hero-actions">
-              <a class="btn primary" href="#download"
-                >↓ &nbsp;Download for Windows</a
-              ><a
-                class="btn"
-                href="https://discord.gg/WWM8pTCXj4"
-                target="_blank"
-                rel="noreferrer"
-                >Join Discord&nbsp; →</a
-              >
-            </div>
-            <div class="mini">
-              Free to download · Windows 10 / 11 · 64-bit · v1.1.1
-            </div>
-          </div>
-        </section>
-        <figure class="app-preview">
-          <img
-            src="assets/dashboard.webp"
-            width="1360"
-            height="900"
-            alt="Avero 1.1 desktop dashboard with local Roblox detection, favorite commands, presets, and command history"
-          />
-          <figcaption>
-            The actual Avero 1.1 workspace · Your settings stay on your device.
-          </figcaption>
-        </figure>
-        <section class="section" id="features">
-          <div class="eyebrow">Built for ER:LC staff</div>
-          <h2 class="heading">Less typing. More staffing.</h2>
-          <p class="sub">
-            Avero puts repetitive staff actions within reach so your team can
-            spend less time rewriting commands and messages.
-          </p>
-          <div class="feature-grid">
-            <article class="feature">
-              <div class="icon">⌘</div>
-              <h3>Quick commands</h3>
-              <p>
-                Search 45 sourced actions, pin favorites, and review the exact
-                command preview. When you choose Send, Avero focuses Roblox and
-                enters the command using normal Windows keyboard input.
-              </p>
-            </article>
-            <article class="feature small">
-              <div class="icon">✦</div>
-              <h3>Your presets</h3>
-              <p>
-                Create reusable presets for commands and staff messages such as
-                announcements and hints, alongside useful defaults.
-              </p>
-            </article>
-          </div>
-        </section>
-        <section class="section">
-          <div class="roadmap">
-            <div class="roadmap-inner">
-              <div>
-                <div class="eyebrow">New in 1.1</div>
-                <h2>Your next staff workflow is here.</h2>
-                <p>
-                  Local Roblox sending, a dedicated Moderation Center, editable
-                  saved reasons, command favorites, and a Ctrl+K palette make
-                  everyday staffing faster. Existing presets and settings are
-                  preserved. Ban confirmation is always on, and local history
-                  records each sending result.
-                </p>
-                <p style="margin-top: 16px">
-                  <a
-                    href="https://github.com/BlueDev1222/avero.fun/releases/tag/v1.1.1"
-                    style="color: var(--green)"
-                    >Read the release notes →</a
-                  >
-                </p>
-              </div>
-              <div class="devchip">● AVAILABLE NOW</div>
-            </div>
-          </div>
-        </section>
-        <section class="section" id="download">
-          <div class="download-head">
-            <div class="eyebrow">Get Avero</div>
-            <h2 class="heading">Choose your download.</h2>
-            <p class="sub">
-              Install it normally or keep a portable copy. Both include the same
-              Avero experience.
-            </p>
-          </div>
-          <div class="downloads">
-            <article class="download-card recommended">
-              <span class="rec">Recommended</span>
-              <div class="os">⊞</div>
-              <h3>Windows Setup</h3>
-              <p>
-                The standard Avero installation. Best for most users and the
-                easiest way to keep Avero on your PC.
-              </p>
-              <div class="meta">
-                <span>WINDOWS</span><span>V1.1.1</span><span>INSTALLER</span>
-              </div>
-              <a
-                class="download-btn"
-                href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.1.1/Avero-Setup-1.1.1.exe"
-                >↓ &nbsp;Download Setup</a
-              >
-            </article>
-            <article class="download-card">
-              <div class="os">↗</div>
-              <h3>Portable</h3>
-              <p>
-                No installation needed. Run Avero from a folder or USB drive.
-                Preferences and history still save locally on each PC.
-              </p>
-              <div class="meta">
-                <span>WINDOWS</span><span>V1.1.1</span><span>PORTABLE</span>
-              </div>
-              <a
-                class="download-btn alt"
-                href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.1.1/Avero-Portable-1.1.1.exe"
-                >↓ &nbsp;Download Portable</a
-              >
-            </article>
-          </div>
-          <p class="safe">
-            This release is unsigned; Windows may show an unknown-publisher or
-            SmartScreen warning. Automatic updates are not enabled in this
-            build. Download from avero.fun or this GitHub release.
-            <a
-              href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.1.1/SHA256SUMS.txt"
-              style="color: var(--green)"
-              >Verify file checksums →</a
-            >
-          </p>
-          <section class="release-faq" aria-labelledby="faq-title">
-            <h2 id="faq-title" class="heading">A few details.</h2>
-            <details>
-              <summary>How does local sending work?</summary>
-              <p>
-                Avero identifies the signed Roblox desktop player and checks
-                that its window is foreground before keyboard input. Keep your
-                intended ER:LC session open with menus closed. Escape or a focus
-                change stops further input. The connection test only finds and
-                focuses Roblox; it sends no keys.
-              </p>
-            </details>
-            <details>
-              <summary>What does “Sent” mean?</summary>
-              <p>
-                It means local keyboard input completed, not that the game
-                accepted the command. Avero cannot independently confirm that
-                chat opened. Check the result in Roblox before retrying. Live
-                game execution was not tested for this release.
-              </p>
-            </details>
-            <details>
-              <summary>Which commands and usernames are available?</summary>
-              <p>
-                The registry contains 45 sourced actions. Game permissions,
-                server packs, and game updates affect availability; the in-game
-                :commands list remains the final reference. Warning message uses
-                :pm, not a native :warn command. Ban reasons are recorded
-                locally. Recent Players contains manually entered usernames from
-                the current session, not a live roster.
-              </p>
-            </details>
-            <details>
-              <summary>Do I need to share my Roblox login?</summary>
-              <p>
-                No. Avero does not request Roblox passwords or account
-                credentials. Your presets, settings, reasons, and history are
-                stored locally. Existing Avero settings are preserved when
-                upgrading.
-              </p>
-            </details>
-          </section>
-          <div class="discord-panel">
-            <div>
-              <h2>Be part of what comes next.</h2>
-              <p>
-                Join the Avero Discord for development updates, support,
-                announcements, and upcoming feature previews.
-              </p>
-            </div>
-            <a
-              class="discord-btn"
-              href="https://discord.gg/WWM8pTCXj4"
-              target="_blank"
-              rel="noreferrer"
-              >Join the Discord →</a
-            >
-          </div>
-        </section>
-      </div>
-    </main>
-    <footer>
-      <div class="shell footer">
-        <span
-          >© 2026 Avero · Independent software, unaffiliated with Roblox or
-          PRC.</span
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="header">
+      <div class="container nav">
+        <a class="brand" href="#" aria-label="Avero home"
+          ><img src="assets/logo.webp" alt="" width="38" height="35" /><span
+            >avero</span
+          ></a
         >
-        <div class="footer-links">
-          <a href="#download">Download</a
+        <nav aria-label="Main navigation">
+          <a href="#workspace">Workspace</a><a href="#features">Features</a
           ><a
             href="https://discord.gg/WWM8pTCXj4"
             target="_blank"
-            rel="noreferrer"
-            >Discord</a
-          ><a
-            href="https://github.com/BlueDev1222/avero.fun"
-            target="_blank"
-            rel="noreferrer"
-            >GitHub</a
+            rel="noopener noreferrer"
+            >Community ↗</a
+          >
+        </nav>
+        <a class="nav-cta" href="#download"
+          >Get Avero <span aria-hidden="true">↓</span></a
+        >
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero container">
+        <div class="hero-copy">
+          <a
+            class="version"
+            href="https://github.com/BlueDev1222/avero.fun/releases/tag/v1.1.1"
+            ><span class="dot"></span> AVERO 1.1.1 IS HERE
+            <span aria-hidden="true">↗</span></a
+          >
+          <p class="eyebrow">MADE FOR ER:LC STAFF</p>
+          <h1>Your server.<br />Your people.<br /><em>Your workspace.</em></h1>
+          <p class="hero-description">
+            A little less busywork.<br />A lot more time for your community.
+          </p>
+          <div class="hero-actions">
+            <a class="button blue" href="#download"
+              ><svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M2 4.5 10.5 3v8H2zm10-1.8L22 1v10h-10zM2 13h8.5v8L2 19.5zm10 0h10v10l-10-1.7z"
+                /></svg
+              >Download for Windows <span aria-hidden="true">↓</span></a
+            ><a class="quiet-link" href="#workspace"
+              >Take a look <span aria-hidden="true">↘</span></a
+            >
+          </div>
+          <p class="platform">
+            Free to download <span>·</span> Windows 10 / 11
+            <span>·</span> 64-bit
+          </p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <span class="art-coordinate">AV / 01</span
+          ><img
+            class="hero-logo"
+            src="assets/logo.webp"
+            width="760"
+            height="689"
+            alt=""
+            fetchpriority="high"
+          />
+          <div class="floating-label">
+            <span class="plus">+</span>
+            <div>Less friction.<strong>More focus.</strong></div>
+          </div>
+          <div class="art-bottom">
+            <span class="art-line"></span> BUILT AROUND YOUR WORKFLOW
+          </div>
+        </div>
+      </section>
+      <div class="value-bar container">
+        <p><span>01 /</span> Commands within reach</p>
+        <p><span>02 /</span> Your settings, saved locally</p>
+        <p><span>03 /</span> Built for Windows</p>
+        <a href="#workspace">SCROLL TO EXPLORE ↓</a>
+      </div>
+      <section class="workspace container section" id="workspace">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MEET YOUR NEW WORKSPACE</p>
+            <h2>Everything in place.<br />Ready for your next session.</h2>
+          </div>
+          <p>
+            From the first announcement to the last staff action.<br />Avero
+            keeps the repeat work close at hand.
+          </p>
+        </div>
+        <div
+          class="preview-tabs"
+          role="tablist"
+          aria-label="Explore Avero views"
+        >
+          <button
+            role="tab"
+            id="tab-dashboard"
+            aria-controls="app-panel"
+            aria-selected="true"
+            data-view="dashboard"
+          >
+            01 <span>Dashboard</span></button
+          ><button
+            role="tab"
+            id="tab-moderation"
+            aria-controls="app-panel"
+            aria-selected="false"
+            tabindex="-1"
+            data-view="moderation"
+          >
+            02 <span>Moderation</span></button
+          ><button
+            role="tab"
+            id="tab-compact"
+            aria-controls="app-panel"
+            aria-selected="false"
+            tabindex="-1"
+            data-view="compact"
+          >
+            03 <span>Compact mode</span>
+          </button>
+        </div>
+        <div
+          class="app-panel"
+          id="app-panel"
+          role="tabpanel"
+          aria-labelledby="tab-dashboard"
+          tabindex="0"
+        >
+          <div class="preview-chrome">
+            <span><i></i> AVERO / WINDOWS WORKSPACE</span
+            ><span>REAL APP. REAL WORKFLOW.</span>
+          </div>
+          <div class="screenshot-stage">
+            <img
+              id="app-screenshot"
+              src="assets/dashboard.webp"
+              width="1360"
+              height="900"
+              alt="Avero dashboard with favorite commands, saved presets, and local Roblox detection"
+            />
+          </div>
+          <div class="preview-description">
+            <p id="preview-caption">
+              Your commands, presets, and recent activity. One place to start.
+            </p>
+            <span><kbd>Ctrl</kbd> + <kbd>K</kbd> YOUR NEXT ACTION</span>
+          </div>
+        </div>
+      </section>
+      <section class="features container section" id="features">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">LESS REPEAT WORK</p>
+            <h2>Keep the tools.<br />Lose the friction.</h2>
+          </div>
+          <p>Purpose-built for the work staff do every day.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature feature-wide">
+            <div class="feature-copy">
+              <span class="feature-number">01 / COMMAND CENTER</span>
+              <h3>The right command.<br />Right when you need it.</h3>
+              <p>
+                Search 45 sourced actions, pin your favorites, and build a
+                command from simple fields. Review the exact text, then let
+                Avero handle the typing.
+              </p>
+              <a class="quiet-link" href="#workspace" data-open-view="dashboard"
+                >Explore the workspace ↗</a
+              >
+            </div>
+            <div class="command-visual" aria-label="Example command preview">
+              <div class="visual-bar">
+                <span class="dot"></span> COMMAND PREVIEW <span>↗</span>
+              </div>
+              <code><span>:m</span> Session starting!</code>
+              <div class="visual-tags">
+                <span>Communication</span><span>Ready to review</span>
+              </div>
+              <div class="visual-bottom">
+                <span>Built from your details.</span><span>↵</span>
+              </div>
+            </div>
+          </article>
+          <article class="feature">
+            <span class="feature-number">02 / MODERATION</span>
+            <h3>Act with confidence.</h3>
+            <p>
+              Editable reasons, manually entered usernames, and clear command
+              previews. Bans always ask for confirmation.
+            </p>
+            <div class="reason-tags" aria-label="Example reason suggestions">
+              <span class="selected">Mass RDM</span><span>Staff Evasion</span
+              ><span>NLR</span><span>Custom reason +</span>
+            </div>
+            <a class="quiet-link" href="#workspace" data-open-view="moderation"
+              >See moderation ↗</a
+            >
+          </article>
+          <article class="feature">
+            <span class="feature-number">03 / MESSAGES & PRESETS</span>
+            <h3>Write it once.<br />Make it a preset.</h3>
+            <p>
+              Your next restart notice is already written. Create, reorder, and
+              share the messages your team uses most.
+            </p>
+            <div class="preset-example">
+              <span>↗</span>
+              <div>
+                Server Restart<small>:m Server restart in 5 minutes.</small>
+              </div>
+              <span class="star">✦</span>
+            </div>
+          </article>
+        </div>
+        <div class="small-features">
+          <div>
+            <span>↔</span>
+            <h4>Fits beside your game.</h4>
+            <p>
+              Compact mode and always-on-top keep Avero close without taking
+              over.
+            </p>
+          </div>
+          <div>
+            <span>⌘</span>
+            <h4>A shortcut to your next action.</h4>
+            <p>
+              Open the command palette with Ctrl+K, search, and get straight to
+              the details.
+            </p>
+          </div>
+          <div>
+            <span>◷</span>
+            <h4>A record you can return to.</h4>
+            <p>
+              Local history keeps the action, reason, timestamp, and sending
+              result.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="process-section">
+        <div class="container process">
+          <div>
+            <p class="eyebrow">A SHORTER PATH TO DONE</p>
+            <h2>Choose it.<br />Check it.<br /><em>Send it.</em></h2>
+            <p>
+              You decide what happens.<br />Avero takes care of the keystrokes.
+            </p>
+          </div>
+          <ol>
+            <li>
+              <span>01</span>
+              <div>
+                <h3>Find your action</h3>
+                <p>
+                  Pick a favorite or search the command catalog. Enter the
+                  username and details your action needs.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <h3>Give it a quick review</h3>
+                <p>
+                  Check the exact command preview. Confirm when prompted. You
+                  can still edit the reason or cancel.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <h3>Send through Roblox</h3>
+                <p>
+                  Avero focuses the verified Roblox window and uses ordinary
+                  Windows input. Check the outcome in-game.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section class="download-section" id="download">
+        <div class="container">
+          <div class="download-heading">
+            <div>
+              <p class="eyebrow">YOUR NEXT SESSION STARTS HERE</p>
+              <h2>Make room for<br />your community.</h2>
+            </div>
+            <p>Avero 1.1.1<br /><span>Free for Windows 10 / 11 · x64</span></p>
+          </div>
+          <div class="downloads">
+            <article class="download-card">
+              <div class="download-title">
+                <span class="download-icon" aria-hidden="true">⊞</span
+                ><span class="recommended">RECOMMENDED</span>
+              </div>
+              <h3>Windows installer</h3>
+              <p>
+                Settle Avero into your setup.<br />Includes Start menu and
+                desktop shortcuts.
+              </p>
+              <a
+                class="button dark"
+                href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.1.1/Avero-Setup-1.1.1.exe"
+                >Download installer <span aria-hidden="true">↓</span></a
+              ><span class="file-info"
+                >.EXE <i>·</i> 116.2 MB <i>·</i> VERSION 1.1.1</span
+              >
+            </article>
+            <article class="download-card portable">
+              <div class="download-title">
+                <span class="download-icon" aria-hidden="true">↗</span
+                ><span class="recommended">NO INSTALLATION</span>
+              </div>
+              <h3>Portable version</h3>
+              <p>
+                Open Avero from a folder or USB drive.<br />Settings still save
+                locally on each PC.
+              </p>
+              <a
+                class="button outline"
+                href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.1.1/Avero-Portable-1.1.1.exe"
+                >Download portable <span aria-hidden="true">↓</span></a
+              ><span class="file-info"
+                >.EXE <i>·</i> 115.8 MB <i>·</i> VERSION 1.1.1</span
+              >
+            </article>
+          </div>
+          <div class="download-notes">
+            <p>
+              This build is unsigned. Windows may show an unknown-publisher or
+              SmartScreen warning. Automatic updates are not enabled in this
+              release.
+            </p>
+            <div>
+              <a
+                href="https://github.com/BlueDev1222/avero.fun/releases/tag/v1.1.1"
+                >Release notes ↗</a
+              ><a
+                href="https://github.com/BlueDev1222/avero.fun/releases/download/v1.1.1/SHA256SUMS.txt"
+                >File checksums ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="community container">
+        <div class="community-symbol" aria-hidden="true">↗</div>
+        <div>
+          <p class="eyebrow">BETTER WITH YOUR COMMUNITY</p>
+          <h2>Help shape what comes next.</h2>
+          <p>
+            Get support, follow development, and bring your ideas to the Avero
+            Discord.
+          </p>
+        </div>
+        <a
+          class="button secondary"
+          href="https://discord.gg/WWM8pTCXj4"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Join the Discord ↗</a
+        >
+      </section>
+      <section class="faq container section">
+        <div>
+          <p class="eyebrow">BEFORE YOUR FIRST SESSION</p>
+          <h2>Good to know.</h2>
+          <a
+            class="quiet-link"
+            href="https://github.com/BlueDev1222/avero.fun/issues"
+            >Something else? Report an issue ↗</a
           >
         </div>
+        <div class="questions">
+          <details>
+            <summary>
+              How does Avero send commands?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              When you choose Send, Avero identifies the signed Roblox desktop
+              player, brings its window forward, checks focus, and enters your
+              command using normal Windows keyboard input. Escape or a focus
+              change stops subsequent input. Keep your intended ER:LC session
+              open with menus closed. The connection test only finds and focuses
+              the window; it sends no keys.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Does “Sent” mean the command worked?<span aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <p>
+              “Sent” means the local input sequence completed. Avero cannot
+              independently confirm that chat opened or the game accepted the
+              command. Check the outcome in Roblox before retrying. Successful
+              command execution in a live game was not tested for this release.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Which commands can I use?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              The catalog includes 45 sourced actions. Your permissions, server
+              features, and game updates affect availability; the in-game
+              :commands list is the final reference. Warning message explicitly
+              uses :pm, not a native :warn command. Ban reasons are recorded
+              locally. Custom text that would change during command generation
+              is blocked from automatic sending; you can still copy it.
+            </p>
+          </details>
+          <details>
+            <summary>
+              What happens to my data?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Presets, settings, saved reasons, and history stay on your device.
+              Recent Players holds manually entered usernames for the current
+              session only; it is not an online player list. Avero does not
+              request Roblox passwords or account credentials.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Can I keep my existing settings?<span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              Yes. Close Avero before upgrading. Version 1.1.1 preserves
+              existing presets, preferences, and history, while adding defaults
+              for the new tools. The portable version uses the same local data
+              location.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer class="footer container">
+      <div class="footer-main">
+        <a class="brand" href="#"
+          ><img src="assets/logo.webp" width="38" height="35" alt="" /><span
+            >avero</span
+          ></a
+        >
+        <p>More time for your people.</p>
+        <div>
+          <a href="https://github.com/BlueDev1222/avero.fun">GitHub ↗</a
+          ><a
+            href="https://discord.gg/WWM8pTCXj4"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Discord ↗</a
+          ><a href="#download">Download ↓</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Avero</span>
+        <p>
+          Independent software. Not affiliated with Roblox or Police Roleplay
+          Community.
+        </p>
+        <span>DESIGNED FOR WINDOWS</span>
       </div>
     </footer>
   </body>
